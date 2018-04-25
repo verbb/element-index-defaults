@@ -1,0 +1,94 @@
+{% extends 'element-index-defaults/_layouts' %}
+{% import '_includes/forms' as forms %}
+
+{% set crumbs = [
+    { label: 'Element Indexes' | t('element-index-defaults'), url: url('element-index-defaults/settings') },
+    { label: 'Settings' | t('element-index-defaults'), url: url('element-index-defaults/settings') }
+] %}
+
+{% set fullPageForm = true %}
+
+{% set elementTypes = [
+    'craft\\elements\\Asset',
+    'craft\\elements\\Category',
+    'craft\\elements\\Entry',
+] %}
+
+{% block sidebar %}
+    <nav class="element-index-defaults">
+        <ul>
+            <li class="heading"><span>{{ 'Elements' | t('app') }}</span></li>
+
+            {% for elementType in elementTypes %}
+                {% set element = craft.app.elements.createElement(elementType) %}
+
+                <li>
+                    <a href="#{{ element.displayName() }}">
+                        {{ element.displayName() }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </nav>
+{% endblock %}
+
+{% js %}
+    new Craft.ElementIndexDefaults('.source-settings');
+{% endjs %}
+
+{% block content %}
+
+<input type="hidden" name="action" value="plugins/save-plugin-settings">
+<input type="hidden" name="pluginHandle" value="element-index-defaults">
+
+{% for elementType in elementTypes %}
+    {% set element = craft.app.elements.createElement(elementType) %}
+    {% set availableTableAttributes = craft.app.getElementIndexes.getAvailableTableAttributes(element) %}
+
+    <div data-element="{{ element.displayName() }}" class="source-settings hidden">
+        <div class="field">
+            <div class="heading">
+                <label>{{ 'Table Columns' | t('app') }}</label>
+
+                <div class="instructions">
+                    {{ 'Choose which table columns should be the default for this element, and in which order.' | t('app') }}
+                </div>
+            </div>
+
+            <div class="input">
+                {% namespace 'settings' %}
+                    {% for handle in settings[element.displayName()] %}
+                        {% set item = availableTableAttributes[handle] %}
+
+                        <div class="customize-sources-table-column">
+                            <div class="icon move {{ loop.first }}"></div>
+                            
+                            {{ forms.checkbox({
+                                label: item.label,
+                                value: handle,
+                                name: 'tableAttributes[' ~ element.displayName() ~ '][]',
+                                checked: true,
+                            }) }}
+                        </div>
+                    {% endfor %}
+
+                    {% for handle, item in availableTableAttributes %}
+                        {% if handle not in settings[element.displayName()] %}
+                            <div class="customize-sources-table-column">
+                                <div class="icon move"></div>
+
+                                {{ forms.checkbox({
+                                    label: item.label,
+                                    value: handle,
+                                    name: 'tableAttributes[' ~ element.displayName() ~ '][]',
+                                }) }}
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                {% endnamespace %}
+            </div>
+        </div>
+    </div>
+{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,43 @@
+{
+    "name": "verbb/element-index-defaults",
+    "description": "A Craft CMS plugin to help setup default columns for your element indexes.",
+    "type": "craft-plugin",
+    "version": "1.0.0",
+    "keywords": [
+        "craft",
+        "cms",
+        "craftcms",
+        "craft-plugin"
+    ],
+    "support": {
+        "email": "support@verbb.io",
+        "issues": "https://github.com/verbb/element-index-defaults/issues?state=open",
+        "source": "https://github.com/verbb/element-index-defaults",
+        "docs": "https://github.com/verbb/element-index-defaults",
+        "rss": "https://github.com/verbb/element-index-defaults/commits/v2.atom"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Verbb",
+            "homepage": "https://verbb.io"
+        }
+    ],
+    "require": {
+        "craftcms/cms": "^3.0.0"
+    },
+    "autoload": {
+        "psr-4": {
+          "verbb\\elementindexdefaults\\": "src/"
+        }
+    },
+    "extra": {
+        "name": "Element Index Defaults",
+        "handle": "element-index-defaults",
+        "schemaVersion": "1.0.0",
+        "hasCpSettings": true,
+        "hasCpSection": false,
+        "changelogUrl": "https://raw.githubusercontent.com/verbb/element-index-defaults/master/CHANGELOG.md",
+        "class": "verbb\\elementindexdefaults\\ElementIndexDefaults"
+    }
+}
