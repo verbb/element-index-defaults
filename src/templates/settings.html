@@ -58,18 +58,20 @@
             <div class="input">
                 {% namespace 'settings' %}
                     {% for handle in settings[element.displayName()] %}
-                        {% set item = availableTableAttributes[handle] %}
+                        {% set item = availableTableAttributes[handle] ?? null %}
 
-                        <div class="customize-sources-table-column">
-                            <div class="icon move {{ loop.first }}"></div>
-                            
-                            {{ forms.checkbox({
-                                label: item.label,
-                                value: handle,
-                                name: element.displayName() ~ '[]',
-                                checked: true,
-                            }) }}
-                        </div>
+                        {% if item %}
+                            <div class="customize-sources-table-column">
+                                <div class="icon move {{ loop.first }}"></div>
+                                
+                                {{ forms.checkbox({
+                                    label: item.label,
+                                    value: handle,
+                                    name: element.displayName() ~ '[]',
+                                    checked: true,
+                                }) }}
+                            </div>
+                        {% endif %}
                     {% endfor %}
 
                     {% for handle, item in availableTableAttributes %}
