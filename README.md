@@ -4,7 +4,29 @@
 
 Element Index Defaults is a Craft CMS plugin to help set useful defaults for your element indexes. This only sets the default columns on element indexes - you can still use the small 'cog' icon to edit table columns on a per-source basis as normal.
 
-Supported Elements:
+## Installation
+You can install Element Index Defaults via the plugin store, or through Composer.
+
+### Craft Plugin Store
+To install **Element Index Defaults**, navigate to the _Plugin Store_ section of your Craft control panel, search for `Element Index Defaults`, and click the _Try_ button.
+
+### Composer
+You can also add the package to your project using Composer.
+
+To install the plugin, follow these instructions.
+
+1. Open your terminal and go to your Craft project:
+
+        cd /path/to/project
+
+2. Then tell Composer to load the plugin:
+    
+        composer require verbb/element-index-defaults
+
+3. In the Control Panel, go to Settings → Plugins and click the “Install” button for Element Index Defaults.
+
+###Supported Elements:
+
 - Assets
 - Categories
 - Entries
