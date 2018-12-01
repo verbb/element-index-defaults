@@ -66,6 +66,13 @@ return [
 
 All settings are stored in the plugin's settings, so if you ever have trouble, simply uninstall the plugin, and indexes will go back to their default state.
 
+## Show your Support
+
+Element Index Defaults is licensed under the MIT license, meaning it will always be free and open source – we love free stuff! If you'd like to show your support to the plugin regardless, buy us a :beers:. Please note that this does not entitle you to any form of support, and is completely optional.
+
+[![Beerpay](https://beerpay.io/verbb/element-index-defaults/badge.svg?style=beer-square)](https://beerpay.io/verbb/element-index-defaults)
+
+
 <h2></h2>
 
 <a href="https://verbb.io" target="_blank">
