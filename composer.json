@@ -34,9 +34,6 @@
     "extra": {
         "name": "Element Index Defaults",
         "handle": "element-index-defaults",
-        "schemaVersion": "1.0.0",
-        "hasCpSettings": true,
-        "hasCpSection": false,
         "changelogUrl": "https://raw.githubusercontent.com/verbb/element-index-defaults/master/CHANGELOG.md",
         "class": "verbb\\elementindexdefaults\\ElementIndexDefaults"
     }

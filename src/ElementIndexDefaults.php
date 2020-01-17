@@ -1,6 +1,9 @@
 <?php
 namespace verbb\elementindexdefaults;
 
+use verbb\elementindexdefaults\base\PluginTrait;
+use verbb\elementindexdefaults\models\Settings;
+
 use Craft;
 use craft\base\Element;
 use craft\base\Plugin;
@@ -12,16 +15,21 @@ use craft\events\RegisterElementDefaultTableAttributesEvent;
 use craft\helpers\UrlHelper;
 use craft\web\UrlManager;
 
-use verbb\elementindexdefaults\models\Settings;
-
 use yii\base\Event;
 
 class ElementIndexDefaults extends Plugin
 {
-    // Static Properties
+    // Public Properties
     // =========================================================================
 
-    public static $plugin;
+    public $schemaVersion = '1.0.0';
+    public $hasSettings = true;
+
+
+    // Traits
+    // =========================================================================
+
+    use PluginTrait;
 
 
     // Public Methods
@@ -33,43 +41,10 @@ class ElementIndexDefaults extends Plugin
 
         self::$plugin = $this;
 
-        // Register our CP routes
-        Event::on(UrlManager::class, UrlManager::EVENT_REGISTER_CP_URL_RULES, [$this, 'registerCpUrlRules']);
-
-        // Setup defaults for our supported elements
-        Event::on(Entry::class, Element::EVENT_REGISTER_DEFAULT_TABLE_ATTRIBUTES, [$this, 'entryDefaultTableAttributes']);
-        Event::on(Category::class, Element::EVENT_REGISTER_DEFAULT_TABLE_ATTRIBUTES, [$this, 'categoryDefaultTableAttributes']);
-        Event::on(Asset::class, Element::EVENT_REGISTER_DEFAULT_TABLE_ATTRIBUTES, [$this, 'assetDefaultTableAttributes']);
-    }
-
-    public function entryDefaultTableAttributes(RegisterElementDefaultTableAttributesEvent $event)
-    {
-        $settings = ElementIndexDefaults::$plugin->getSettings();
-
-        $event->tableAttributes = $settings['Entry'];
-    }
-
-    public function categoryDefaultTableAttributes(RegisterElementDefaultTableAttributesEvent $event)
-    {
-        $settings = ElementIndexDefaults::$plugin->getSettings();
-
-        $event->tableAttributes = $settings['Category'];
-    }
-
-    public function assetDefaultTableAttributes(RegisterElementDefaultTableAttributesEvent $event)
-    {
-        $settings = ElementIndexDefaults::$plugin->getSettings();
-
-        $event->tableAttributes = $settings['Asset'];
-    }
-
-    public function registerCpUrlRules(RegisterUrlRulesEvent $event)
-    {
-        $rules = [
-            'element-index-defaults/settings' => 'element-index-defaults/base/settings',
-        ];
-
-        $event->rules = array_merge($event->rules, $rules);
+        $this->_setPluginComponents();
+        $this->_setLogging();
+        $this->_registerCpRoutes();
+        $this->_registerEventHandlers();
     }
 
     public function getSettingsResponse()
@@ -84,5 +59,40 @@ class ElementIndexDefaults extends Plugin
     protected function createSettingsModel(): Settings
     {
         return new Settings();
+    }
+
+
+    // Private Methods
+    // =========================================================================
+
+    private function _registerCpRoutes()
+    {
+        Event::on(UrlManager::class, UrlManager::EVENT_REGISTER_CP_URL_RULES, function(RegisterUrlRulesEvent $event) {
+            $event->rules = array_merge($event->rules, [
+                'element-index-defaults/settings' => 'element-index-defaults/base/settings',
+            ]);
+        });
+    }
+
+    private function _registerEventHandlers()
+    {
+        // Setup defaults for our supported elements
+        Event::on(Entry::class, Element::EVENT_REGISTER_DEFAULT_TABLE_ATTRIBUTES, function(RegisterElementDefaultTableAttributesEvent $event) {
+            $settings = ElementIndexDefaults::$plugin->getSettings();
+
+            $event->tableAttributes = $settings['Entry'];
+        });
+
+        Event::on(Category::class, Element::EVENT_REGISTER_DEFAULT_TABLE_ATTRIBUTES, function(RegisterElementDefaultTableAttributesEvent $event) {
+            $settings = ElementIndexDefaults::$plugin->getSettings();
+
+            $event->tableAttributes = $settings['Category'];
+        });
+
+        Event::on(Asset::class, Element::EVENT_REGISTER_DEFAULT_TABLE_ATTRIBUTES, function(RegisterElementDefaultTableAttributesEvent $event) {
+            $settings = ElementIndexDefaults::$plugin->getSettings();
+
+            $event->tableAttributes = $settings['Asset'];
+        });
     }
 }
