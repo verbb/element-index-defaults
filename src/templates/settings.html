@@ -6,6 +6,7 @@
     { label: 'Settings' | t('element-index-defaults'), url: url('element-index-defaults/settings') }
 ] %}
 
+{% set selectedTab = 'settings' %}
 {% set fullPageForm = true %}
 
 {% set elementTypes = [
@@ -36,7 +37,7 @@
     new Craft.ElementIndexDefaults('.source-settings');
 {% endjs %}
 
-{% block content %}
+{% block blockContent %}
 
 <input type="hidden" name="action" value="plugins/save-plugin-settings">
 <input type="hidden" name="pluginHandle" value="element-index-defaults">

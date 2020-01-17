@@ -5,6 +5,8 @@ use Craft;
 use craft\web\AssetBundle;
 use craft\web\assets\cp\CpAsset;
 
+use verbb\base\assetbundles\CpAsset as VerbbCpAsset;
+
 class ElementIndexDefaultsAsset extends AssetBundle
 {
     // Public Methods
@@ -15,15 +17,12 @@ class ElementIndexDefaultsAsset extends AssetBundle
         $this->sourcePath = "@verbb/elementindexdefaults/resources/dist";
 
         $this->depends = [
+            VerbbCpAsset::class,
             CpAsset::class,
         ];
 
         $this->js = [
             'js/element-index-defaults.js',
-        ];
-
-        $this->css = [
-            'css/element-index-defaults.css',
         ];
 
         parent::init();

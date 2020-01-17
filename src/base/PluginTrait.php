@@ -8,6 +8,8 @@ use craft\log\FileTarget;
 
 use yii\log\Logger;
 
+use verbb\base\BaseHelper;
+
 trait PluginTrait
 {
     // Static Properties
@@ -18,21 +20,6 @@ trait PluginTrait
 
     // Public Methods
     // =========================================================================
-
-    private function _setPluginComponents()
-    {
-        $this->setComponents([
-
-        ]);
-    }
-
-    private function _setLogging()
-    {
-        Craft::getLogger()->dispatcher->targets[] = new FileTarget([
-            'logFile' => Craft::getAlias('@storage/logs/element-index-defaults.log'),
-            'categories' => ['element-index-defaults'],
-        ]);
-    }
 
     public static function log($message, $attributes = [])
     {
@@ -50,6 +37,27 @@ trait PluginTrait
         }
 
         Craft::getLogger()->log($message, Logger::LEVEL_ERROR, 'element-index-defaults');
+    }
+
+
+    // Private Methods
+    // =========================================================================
+
+    private function _setPluginComponents()
+    {
+        $this->setComponents([
+
+        ]);
+
+        BaseHelper::registerModule();
+    }
+
+    private function _setLogging()
+    {
+        Craft::getLogger()->dispatcher->targets[] = new FileTarget([
+            'logFile' => Craft::getAlias('@storage/logs/element-index-defaults.log'),
+            'categories' => ['element-index-defaults'],
+        ]);
     }
 
 }
