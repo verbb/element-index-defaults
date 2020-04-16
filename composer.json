@@ -2,7 +2,7 @@
     "name": "verbb/element-index-defaults",
     "description": "A Craft CMS plugin to help setup default columns for your element indexes.",
     "type": "craft-plugin",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "keywords": [
         "craft",
         "cms",
@@ -25,7 +25,7 @@
     ],
     "require": {
         "craftcms/cms": "^3.0.0",
-        "verbb/base": "^1.0.0"
+        "verbb/base": "^1.0.2"
     },
     "autoload": {
         "psr-4": {
