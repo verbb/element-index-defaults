@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.6 - 2020-08-03
+
+### Fixed
+- Fix plugin errors not appearing.
+
 ## 1.0.5 - 2020-04-16
 
 ### Fixed
