@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.0.0 - 2021-08-25
+
+### Added
+- Add support for third-party elements.
+
+### Changed
+- Change settings structure to handle third-party elements.
+
 ## 1.0.6 - 2020-08-03
 
 ### Fixed
