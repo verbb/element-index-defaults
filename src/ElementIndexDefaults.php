@@ -7,9 +7,6 @@ use verbb\elementindexdefaults\models\Settings;
 use Craft;
 use craft\base\Element;
 use craft\base\Plugin;
-use craft\elements\Asset;
-use craft\elements\Category;
-use craft\elements\Entry;
 use craft\events\RegisterUrlRulesEvent;
 use craft\events\RegisterElementDefaultTableAttributesEvent;
 use craft\helpers\UrlHelper;
@@ -77,22 +74,12 @@ class ElementIndexDefaults extends Plugin
     private function _registerEventHandlers()
     {
         // Setup defaults for our supported elements
-        Event::on(Entry::class, Element::EVENT_REGISTER_DEFAULT_TABLE_ATTRIBUTES, function(RegisterElementDefaultTableAttributesEvent $event) {
-            $settings = ElementIndexDefaults::$plugin->getSettings();
+        $settings = ElementIndexDefaults::$plugin->getSettings();
 
-            $event->tableAttributes = $settings['Entry'];
-        });
-
-        Event::on(Category::class, Element::EVENT_REGISTER_DEFAULT_TABLE_ATTRIBUTES, function(RegisterElementDefaultTableAttributesEvent $event) {
-            $settings = ElementIndexDefaults::$plugin->getSettings();
-
-            $event->tableAttributes = $settings['Category'];
-        });
-
-        Event::on(Asset::class, Element::EVENT_REGISTER_DEFAULT_TABLE_ATTRIBUTES, function(RegisterElementDefaultTableAttributesEvent $event) {
-            $settings = ElementIndexDefaults::$plugin->getSettings();
-
-            $event->tableAttributes = $settings['Asset'];
-        });
+        foreach ($settings->getElementDefaults() as $elementClass => $elementDefault) {
+            Event::on($elementClass, Element::EVENT_REGISTER_DEFAULT_TABLE_ATTRIBUTES, function(RegisterElementDefaultTableAttributesEvent $event) use ($elementDefault) {
+                $event->tableAttributes = $elementDefault;
+            });
+        }
     }
 }

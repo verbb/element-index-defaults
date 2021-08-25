@@ -9,18 +9,14 @@
 {% set selectedTab = 'settings' %}
 {% set fullPageForm = true %}
 
-{% set elementTypes = [
-    'craft\\elements\\Asset',
-    'craft\\elements\\Category',
-    'craft\\elements\\Entry',
-] %}
+{% set elementDefaults = settings.getElementDefaults() %}
 
 {% block sidebar %}
     <nav class="element-index-defaults">
         <ul>
             <li class="heading"><span>{{ 'Elements' | t('app') }}</span></li>
 
-            {% for elementType in elementTypes %}
+            {% for elementType, elementDefault in elementDefaults %}
                 {% set element = craft.app.elements.createElement(elementType) %}
 
                 <li>
@@ -42,7 +38,7 @@
 <input type="hidden" name="action" value="plugins/save-plugin-settings">
 <input type="hidden" name="pluginHandle" value="element-index-defaults">
 
-{% for elementType in elementTypes %}
+{% for elementType, elementDefault in elementDefaults %}
     {% set element = craft.app.elements.createElement(elementType) %}
     {% set availableTableAttributes = craft.app.getElementIndexes.getAvailableTableAttributes(element) %}
 
@@ -58,7 +54,7 @@
 
             <div class="input">
                 {% namespace 'settings' %}
-                    {% for handle in settings[element.displayName()] %}
+                    {% for handle in elementDefault %}
                         {% set item = availableTableAttributes[handle] ?? null %}
 
                         {% if item %}
@@ -77,7 +73,7 @@
                     {% endfor %}
 
                     {% for handle, item in availableTableAttributes %}
-                        {% if handle not in settings[element.displayName()] %}
+                        {% if handle not in elementDefault %}
                             <div class="customize-sources-table-column">
                                 <div class="icon move"></div>
 

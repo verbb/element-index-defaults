@@ -25,49 +25,68 @@ To install the plugin, follow these instructions.
 
 3. In the Control Panel, go to Settings → Plugins and click the “Install” button for Element Index Defaults.
 
-### Supported Elements:
-
-- Assets
-- Categories
-- Entries
-
 ### Control Panel
-
 Install the plugin, go to Settings > Element Index Defaults. Use the menu on the left to select your element, and enable/disable, and move any columns around. Be sure to save - and you're done!
 
 ### Configuration File
-
 For even more flexibility, make a config file as part of your regular Craft setup, and never have to worry about it again. Create a file named `element-index-defaults.php` in your config folder for Craft. You'll have access to the following:
 
 ```
 <?php
+use craft\elements\Asset;
+use craft\elements\Category;
+use craft\elements\Entry;
 
 return [
-    'Entry' => [
-        'title',
-        'postDate',
-        'dateUpdated',
-        'link',
-    ],
-    'Category' => [
-        'title',
-        'link',
-    ],
-    'Asset' => [
-        'title',
-        'filename',
-        'size',
-        'dateModified',
-    ]
-];
+    'elementDefaults' => [
+        Entry::class => [
+            'title',
+            'postDate',
+            'expiryDate',
+            'author',
+            'link',
+        ],
 
-?>
+        Category::class => [
+            'title',
+            'link',
+        ],
+
+        Asset::class => [
+            'title',
+            'filename',
+            'size',
+            'dateModified',
+        ],
+    ],
+];
 ```
 
-All settings are stored in the plugin's settings, so if you ever have trouble, simply uninstall the plugin, and indexes will go back to their default state.
+The above show the plugin defaults, which you can extend or override. You can pass any additional element configurations by adding them to the `elementDefaults` array. For example, you might like to setup defaults for the [Verbb Events](https://github.com/verbb/events) plugin.
+
+```
+<?php
+use craft\elements\Entry;
+use verbb\events\elements\Event;
+
+return [
+    'elementDefaults' => [
+        Event::class => [
+            'title',
+            'link',
+        ],
+
+        Entry::class => [
+            'title',
+            'link',
+        ],
+    ],
+];
+```
+
+In addition, we're also showing how to override the entries index. All other defaults are untouched. All settings are stored in the plugin's settings, so if you ever have trouble, simply uninstall the plugin, and indexes will go back to their default state.
 
 ## Show your Support
-
 Element Index Defaults is licensed under the MIT license, meaning it will always be free and open source – we love free stuff! If you'd like to show your support to the plugin regardless, [Sponsor](https://github.com/sponsors/verbb) development.
 
 <h2></h2>
