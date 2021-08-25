@@ -68,10 +68,7 @@ All settings are stored in the plugin's settings, so if you ever have trouble, s
 
 ## Show your Support
 
-Element Index Defaults is licensed under the MIT license, meaning it will always be free and open source – we love free stuff! If you'd like to show your support to the plugin regardless, buy us a :beers:. Please note that this does not entitle you to any form of support, and is completely optional.
-
-[![Beerpay](https://beerpay.io/verbb/element-index-defaults/badge.svg?style=beer-square)](https://beerpay.io/verbb/element-index-defaults)
-
+Element Index Defaults is licensed under the MIT license, meaning it will always be free and open source – we love free stuff! If you'd like to show your support to the plugin regardless, [Sponsor](https://github.com/sponsors/verbb) development.
 
 <h2></h2>
 
