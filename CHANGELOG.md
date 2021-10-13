@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.0.1 - 2021-10-13
+
+### Added
+- Add a warning to table columns when being overridden by a config file.
+
+### Fixed
+- Fix settings not saving correctly, when saving from the control panel.
+
 ## 2.0.0 - 2021-08-25
 
 ### Added
