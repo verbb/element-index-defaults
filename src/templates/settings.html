@@ -1,5 +1,6 @@
 {% extends 'element-index-defaults/_layouts' %}
 {% import '_includes/forms' as forms %}
+{% import 'verbb-base/_macros' as macros %}
 
 {% set crumbs = [
     { label: 'Element Indexes' | t('element-index-defaults'), url: url('element-index-defaults/settings') },
@@ -87,6 +88,12 @@
                     {% endfor %}
                 {% endnamespace %}
             </div>
+
+            {% if craft.app.config.getConfigFromFile('element-index-defaults')['elementDefaults'][className(element)] is defined %}
+                <p class="warning with-icon">
+                    {{ macros.configWarning('elementDefaults', 'element-index-defaults') | md | striptags('<code>') | raw }}
+                </p>
+            {% endif %}
         </div>
     </div>
 {% endfor %}
