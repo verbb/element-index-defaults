@@ -54,7 +54,7 @@
             </div>
 
             <div class="input">
-                {% namespace 'settings' %}
+                {% namespace 'settings[elementDefaults]' %}
                     {% for handle in elementDefault %}
                         {% set item = availableTableAttributes[handle] ?? null %}
 
@@ -65,7 +65,7 @@
                                 {{ forms.checkbox({
                                     label: item.label,
                                     value: handle,
-                                    name: element.displayName() ~ '[]',
+                                    name: elementType ~ '[]',
                                     checked: true,
                                     disabled: (handle == 'title') ? true : false,
                                 }) }}
@@ -81,7 +81,7 @@
                                 {{ forms.checkbox({
                                     label: item.label,
                                     value: handle,
-                                    name: element.displayName() ~ '[]',
+                                    name: elementType ~ '[]',
                                 }) }}
                             </div>
                         {% endif %}
@@ -89,7 +89,7 @@
                 {% endnamespace %}
             </div>
 
-            {% if craft.app.config.getConfigFromFile('element-index-defaults')['elementDefaults'][className(element)] is defined %}
+            {% if craft.app.config.getConfigFromFile('element-index-defaults')['elementDefaults'][elementType] is defined %}
                 <p class="warning with-icon">
                     {{ macros.configWarning('elementDefaults', 'element-index-defaults') | md | striptags('<code>') | raw }}
                 </p>
