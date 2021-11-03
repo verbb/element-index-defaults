@@ -62,7 +62,7 @@ return [
 ];
 ```
 
-The above show the plugin defaults, which you can extend or override. You can pass any additional element configurations by adding them to the `elementDefaults` array. For example, you might like to setup defaults for the [Verbb Events](https://github.com/verbb/events) plugin.
+The above shows the plugin defaults, which you can extend or override. You can pass any additional element configurations by adding them to the `elementDefaults` array. For example, you might like to setup defaults for the [Verbb Events](https://github.com/verbb/events) plugin.
 
 ```
 <?php
