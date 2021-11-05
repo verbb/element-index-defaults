@@ -41,7 +41,7 @@
 
 {% for elementType, elementDefault in elementDefaults %}
     {% set element = craft.app.elements.createElement(elementType) %}
-    {% set availableTableAttributes = craft.app.getElementIndexes.getAvailableTableAttributes(element) %}
+    {% set availableTableAttributes = craft.app.getElementIndexes.getAvailableTableAttributes(elementType) %}
 
     <div data-element="{{ element.displayName() }}" class="source-settings hidden">
         <div class="field">
