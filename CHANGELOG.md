@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.0.2 - 2021-11-05
+
+### Fixed
+- Fix an error when viewing the plugin settings in the control panel.
+
 ## 2.0.1 - 2021-10-13
 
 ### Added
