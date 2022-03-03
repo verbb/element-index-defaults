@@ -6,6 +6,7 @@ use verbb\elementindexdefaults\models\Settings;
 
 use Craft;
 use craft\base\Element;
+use craft\base\Model;
 use craft\base\Plugin;
 use craft\events\RegisterUrlRulesEvent;
 use craft\events\RegisterElementDefaultTableAttributesEvent;
@@ -19,8 +20,8 @@ class ElementIndexDefaults extends Plugin
     // Public Properties
     // =========================================================================
 
-    public $schemaVersion = '1.0.0';
-    public $hasCpSettings = true;
+    public string $schemaVersion = '1.0.0';
+    public bool $hasCpSettings = true;
 
 
     // Traits
@@ -32,7 +33,7 @@ class ElementIndexDefaults extends Plugin
     // Public Methods
     // =========================================================================
 
-    public function init()
+    public function init(): void
     {
         parent::init();
 
@@ -44,16 +45,16 @@ class ElementIndexDefaults extends Plugin
         $this->_registerEventHandlers();
     }
 
-    public function getSettingsResponse()
+    public function getSettingsResponse(): mixed
     {
-        Craft::$app->getResponse()->redirect(UrlHelper::cpUrl('element-index-defaults/settings'));
+        return Craft::$app->getResponse()->redirect(UrlHelper::cpUrl('element-index-defaults/settings'));
     }
 
 
     // Protected Methods
     // =========================================================================
 
-    protected function createSettingsModel(): Settings
+    protected function createSettingsModel(): ?Model
     {
         return new Settings();
     }
@@ -62,7 +63,7 @@ class ElementIndexDefaults extends Plugin
     // Private Methods
     // =========================================================================
 
-    private function _registerCpRoutes()
+    private function _registerCpRoutes(): void
     {
         Event::on(UrlManager::class, UrlManager::EVENT_REGISTER_CP_URL_RULES, function(RegisterUrlRulesEvent $event) {
             $event->rules = array_merge($event->rules, [
@@ -71,7 +72,7 @@ class ElementIndexDefaults extends Plugin
         });
     }
 
-    private function _registerEventHandlers()
+    private function _registerEventHandlers(): void
     {
         // Setup defaults for our supported elements
         $settings = ElementIndexDefaults::$plugin->getSettings();

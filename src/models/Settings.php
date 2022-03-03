@@ -11,9 +11,9 @@ class Settings extends Model
     // Properties
     // =========================================================================
 
-    public $elementDefaults = [];
+    public array $elementDefaults = [];
 
-    private $defaults = [
+    private array $defaults = [
         Entry::class => [
             'title',
             'postDate',
@@ -37,8 +37,10 @@ class Settings extends Model
 
     // Public Properties
     // =========================================================================
-
-    public function getElementDefaults()
+    /**
+     * @return mixed[]
+     */
+    public function getElementDefaults(): array
     {
         return array_merge($this->defaults, $this->elementDefaults);
     }

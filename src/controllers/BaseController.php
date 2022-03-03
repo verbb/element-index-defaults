@@ -1,23 +1,25 @@
 <?php
 namespace verbb\elementindexdefaults\controllers;
 
+use verbb\elementindexdefaults\ElementIndexDefaults;
+
 use Craft;
 use craft\base\Volume;
 use craft\elements\Asset;
 use craft\web\Controller;
 
-use verbb\elementindexdefaults\ElementIndexDefaults;
+use yii\web\Response;
 
 class BaseController extends Controller
 {
     // Public Methods
     // =========================================================================
 
-    public function actionSettings()
+    public function actionSettings(): Response
     {
         $settings = ElementIndexDefaults::$plugin->getSettings();
 
-        $this->renderTemplate('element-index-defaults/settings', array(
+        return $this->renderTemplate('element-index-defaults/settings', array(
             'settings' => $settings,
         ));
     }
