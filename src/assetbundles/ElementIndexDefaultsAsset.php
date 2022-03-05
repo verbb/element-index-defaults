@@ -1,7 +1,6 @@
 <?php
 namespace verbb\elementindexdefaults\assetbundles;
 
-use Craft;
 use craft\web\AssetBundle;
 use craft\web\assets\cp\CpAsset;
 

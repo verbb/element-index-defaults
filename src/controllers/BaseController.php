@@ -3,9 +3,6 @@ namespace verbb\elementindexdefaults\controllers;
 
 use verbb\elementindexdefaults\ElementIndexDefaults;
 
-use Craft;
-use craft\base\Volume;
-use craft\elements\Asset;
 use craft\web\Controller;
 
 use yii\web\Response;

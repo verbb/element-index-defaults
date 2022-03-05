@@ -38,7 +38,7 @@ class Settings extends Model
     // Public Properties
     // =========================================================================
     /**
-     * @return mixed[]
+     * @return array
      */
     public function getElementDefaults(): array
     {
