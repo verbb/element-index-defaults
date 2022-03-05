@@ -16,9 +16,9 @@ class BaseController extends Controller
     {
         $settings = ElementIndexDefaults::$plugin->getSettings();
 
-        return $this->renderTemplate('element-index-defaults/settings', array(
+        return $this->renderTemplate('element-index-defaults/settings', [
             'settings' => $settings,
-        ));
+        ]);
     }
 
 }
