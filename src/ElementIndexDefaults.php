@@ -17,7 +17,7 @@ use yii\base\Event;
 
 class ElementIndexDefaults extends Plugin
 {
-    // Public Properties
+    // Properties
     // =========================================================================
 
     public bool $hasCpSettings = true;

@@ -35,7 +35,7 @@ class Settings extends Model
         ],
     ];
 
-    // Public Properties
+    // Properties
     // =========================================================================
     /**
      * @return array
