@@ -75,6 +75,7 @@ class ElementIndexDefaults extends Plugin
     private function _registerEventHandlers(): void
     {
         // Setup defaults for our supported elements
+        /* @var Settings $settings */
         $settings = ElementIndexDefaults::$plugin->getSettings();
 
         foreach ($settings->getElementDefaults() as $elementClass => $elementDefault) {
