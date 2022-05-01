@@ -41,8 +41,11 @@ class ElementIndexDefaults extends Plugin
 
         $this->_registerComponents();
         $this->_registerLogTarget();
-        $this->_registerCpRoutes();
         $this->_registerEventHandlers();
+
+        if (Craft::$app->getRequest()->getIsCpRequest()) {
+            $this->_registerCpRoutes();
+        }
     }
 
     public function getSettingsResponse(): mixed
