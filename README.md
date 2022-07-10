@@ -7,7 +7,7 @@ Element Index Defaults is a Craft CMS plugin to help set useful defaults for you
 ## Installation
 You can install Element Index Defaults via the plugin store, or through Composer.
 
-### Craft Plugin Store
+## Craft Plugin Store
 To install **Element Index Defaults**, navigate to the _Plugin Store_ section of your Craft control panel, search for `Element Index Defaults`, and click the _Try_ button.
 
 ### Composer
