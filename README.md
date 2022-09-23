@@ -11,19 +11,17 @@ You can install Element Index Defaults via the plugin store, or through Composer
 To install **Element Index Defaults**, navigate to the _Plugin Store_ section of your Craft control panel, search for `Element Index Defaults`, and click the _Try_ button.
 
 ### Composer
-You can also add the package to your project using Composer.
-
-To install the plugin, follow these instructions.
+You can also add the package to your project using Composer and the command line.
 
 1. Open your terminal and go to your Craft project:
+```shell
+cd /path/to/project
+```
 
-        cd /path/to/project
-
-2. Then tell Composer to load the plugin:
-    
-        composer require verbb/element-index-defaults
-
-3. In the Control Panel, go to Settings → Plugins and click the “Install” button for Element Index Defaults.
+2. Then tell Composer to require the plugin, and Craft to install it:
+```shell
+composer require verbb/element-index-defaults && php craft plugin/install element-index-defaults
+```
 
 ### Control Panel
 Install the plugin, go to Settings > Element Index Defaults. Use the menu on the left to select your element, and enable/disable, and move any columns around. Be sure to save - and you're done!
