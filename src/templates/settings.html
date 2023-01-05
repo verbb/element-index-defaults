@@ -2,6 +2,8 @@
 {% import '_includes/forms' as forms %}
 {% import 'verbb-base/_macros' as macros %}
 
+{% requireAdmin %}
+
 {% set crumbs = [
     { label: 'Element Indexes' | t('element-index-defaults'), url: url('element-index-defaults/settings') },
     { label: 'Settings' | t('element-index-defaults'), url: url('element-index-defaults/settings') }
