@@ -2,53 +2,32 @@
 namespace verbb\elementindexdefaults\base;
 
 use verbb\elementindexdefaults\ElementIndexDefaults;
-use verbb\base\BaseHelper;
 
-use Craft;
-
-use yii\log\Logger;
+use verbb\base\LogTrait;
+use verbb\base\helpers\Plugin;
 
 trait PluginTrait
 {
     // Properties
     // =========================================================================
 
-    public static ElementIndexDefaults $plugin;
+    public static ?ElementIndexDefaults $plugin = null;
 
 
-    // Public Methods
+    // Traits
     // =========================================================================
 
-    public static function log(string $message, array $params = []): void
-    {
-        $message = Craft::t('element-index-defaults', $message, $params);
+    use LogTrait;
+    
 
-        Craft::getLogger()->log($message, Logger::LEVEL_INFO, 'element-index-defaults');
-    }
-
-    public static function error(string $message, array $params = []): void
-    {
-        $message = Craft::t('element-index-defaults', $message, $params);
-
-        Craft::getLogger()->log($message, Logger::LEVEL_ERROR, 'element-index-defaults');
-    }
-
-
-    // Private Methods
+    // Static Methods
     // =========================================================================
 
-    private function _registerComponents(): void
+    public static function config(): array
     {
-        $this->setComponents([
+        Plugin::bootstrapPlugin('element-index-defaults');
 
-        ]);
-
-        BaseHelper::registerModule();
-    }
-
-    private function _registerLogTarget(): void
-    {
-        BaseHelper::setFileLogging('element-index-defaults');
+        return [];
     }
 
 }

@@ -56,39 +56,41 @@
             </div>
 
             <div class="input">
-                {% namespace 'settings[elementDefaults]' %}
-                    {% for handle in elementDefault %}
-                        {% set item = availableTableAttributes[handle] ?? null %}
+                <fieldset class="checkbox-select">
+                    {% namespace 'settings[elementDefaults]' %}
+                        {% for handle in elementDefault %}
+                            {% set item = availableTableAttributes[handle] ?? null %}
 
-                        {% if item %}
-                            <div class="customize-sources-table-column">
-                                <div class="icon move {{ loop.first }}"></div>
-                                
-                                {{ forms.checkbox({
-                                    label: item.label,
-                                    value: handle,
-                                    name: elementType ~ '[]',
-                                    checked: true,
-                                    disabled: (handle == 'title') ? true : false,
-                                }) }}
-                            </div>
-                        {% endif %}
-                    {% endfor %}
+                            {% if item %}
+                                <div class="checkbox-select-item customize-sources-table-column">
+                                    <div class="icon move {{ loop.first }}"></div>
+                                    
+                                    {{ forms.checkbox({
+                                        label: item.label,
+                                        value: handle,
+                                        name: elementType ~ '[]',
+                                        checked: true,
+                                        disabled: (handle == 'title') ? true : false,
+                                    }) }}
+                                </div>
+                            {% endif %}
+                        {% endfor %}
 
-                    {% for handle, item in availableTableAttributes %}
-                        {% if handle not in elementDefault %}
-                            <div class="customize-sources-table-column">
-                                <div class="icon move"></div>
+                        {% for handle, item in availableTableAttributes %}
+                            {% if handle not in elementDefault %}
+                                <div class="checkbox-select-item customize-sources-table-column">
+                                    <div class="icon move"></div>
 
-                                {{ forms.checkbox({
-                                    label: item.label,
-                                    value: handle,
-                                    name: elementType ~ '[]',
-                                }) }}
-                            </div>
-                        {% endif %}
-                    {% endfor %}
-                {% endnamespace %}
+                                    {{ forms.checkbox({
+                                        label: item.label,
+                                        value: handle,
+                                        name: elementType ~ '[]',
+                                    }) }}
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    {% endnamespace %}
+                </fieldset>
             </div>
 
             {% if craft.app.config.getConfigFromFile('element-index-defaults')['elementDefaults'][elementType] is defined %}
