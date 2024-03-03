@@ -1,5 +1,5 @@
 # Element Index Defaults plugin for Craft CMS
-<img width="500" src="https://verbb.imgix.net/plugins/element-index-defaults/element-index-defaults-social-card.png?v=1">
+<img width="500" src="https://verbb.imgix.net/plugins/element-index-defaults/element-index-defaults-social-card.png?v=2">
 
 Element Index Defaults is a Craft CMS plugin to help set useful defaults for your element indexes. This only sets the default columns on element indexes - you can still use the small 'cog' icon to edit table columns on a per-source basis as normal.
 
