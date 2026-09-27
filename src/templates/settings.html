@@ -38,8 +38,7 @@
 
 {% block blockContent %}
 
-<input type="hidden" name="action" value="plugins/save-plugin-settings">
-<input type="hidden" name="pluginHandle" value="element-index-defaults">
+<input type="hidden" name="action" value="element-index-defaults/settings/save-settings">
 
 {% for elementType, elementDefault in elementDefaults %}
     {% set element = craft.app.elements.createElement(elementType) %}
