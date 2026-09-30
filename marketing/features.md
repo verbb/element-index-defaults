@@ -14,5 +14,5 @@ Editors should not have to customise every content index before it becomes usefu
 
 Choose defaults per element type and source instead of imposing one table on the whole control panel. Entries, assets, categories and users can each open with the information that makes sense for the people managing them.
 
-![Entry table columns selected and ordered in the Element Index Defaults settings.](../screenshots/output/feature-tour/element-index-defaults-settings.png)
+![Entry table columns selected and ordered in the Element Index Defaults settings.](../screenshots/element-index-defaults-settings.png)
 <!-- feature-section-end -->
