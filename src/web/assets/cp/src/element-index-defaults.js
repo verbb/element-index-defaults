@@ -44,4 +44,3 @@ if (typeof Craft.ElementIndexDefaults === typeof undefined) {
 
 })(jQuery);
 
-

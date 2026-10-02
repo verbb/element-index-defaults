@@ -1,10 +1,10 @@
 <?php
-namespace verbb\elementindexdefaults\assetbundles;
+namespace verbb\elementindexdefaults\web\assets\cp;
 
 use craft\web\AssetBundle;
 use craft\web\assets\cp\CpAsset;
 
-use verbb\base\assetbundles\CpAsset as VerbbCpAsset;
+use verbb\base\web\assets\cp\CpAsset as VerbbCpAsset;
 
 class ElementIndexDefaultsAsset extends AssetBundle
 {
@@ -13,7 +13,7 @@ class ElementIndexDefaultsAsset extends AssetBundle
 
     public function init(): void
     {
-        $this->sourcePath = "@verbb/elementindexdefaults/resources/dist";
+        $this->sourcePath = '@verbb/elementindexdefaults/web/assets/cp/dist';
 
         $this->depends = [
             VerbbCpAsset::class,
@@ -21,7 +21,7 @@ class ElementIndexDefaultsAsset extends AssetBundle
         ];
 
         $this->js = [
-            'js/element-index-defaults.js',
+            'element-index-defaults.js',
         ];
 
         parent::init();
