@@ -18,7 +18,7 @@ class Settings extends Model
             'title',
             'postDate',
             'expiryDate',
-            'author',
+            'authors',
             'link',
         ],
 
