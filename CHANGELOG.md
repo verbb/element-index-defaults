@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 4.0.6 - 2026-11-01
 
 ### Fixed
 - Fixed the default Entries columns not including the Authors column.
